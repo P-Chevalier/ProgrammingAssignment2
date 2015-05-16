@@ -10,6 +10,23 @@
 ## date created: 2015-05-15
 ##
 
+## Usage:
+## source("cachematrix.R")
+## f<-makeCacheMatrix()
+## f$set(matrix(c(10,20,30,40),nrow=2,ncol=2))
+## First time through
+## > cacheSolve(f)
+## [,1]  [,2]
+## [1,] -0.2  0.15
+## [2,]  0.1 -0.05
+## 
+## Second time through
+## > cacheSolve(f)
+## getting cached data
+## [,1]  [,2]
+## [1,] -0.2  0.15
+## [2,]  0.1 -0.05
+
 # The makeCacheMatrix function is designed to create a special "matrix" object that can 
 # have it's inverse cached.
 makeCacheMatrix <- function(x = matrix()) {
@@ -36,7 +53,6 @@ makeCacheMatrix <- function(x = matrix()) {
              setinverse = setinverse, 
              getinverse = getinverse)
 }
-
 
 # The cacheSolve function is designed to compute the inverse of the special "matrix" 
 # returned by makeCacheMatrix
